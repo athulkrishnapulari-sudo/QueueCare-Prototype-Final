@@ -1,0 +1,6 @@
+{
+  "name": "QCare Kerala",
+  "description": "Kerala Government Digital Healthcare Access Platform for OP Bookings, Live Queues, Pharmacy & Blood Bank",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
