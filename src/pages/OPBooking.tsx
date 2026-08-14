@@ -12,8 +12,7 @@ import {
   DoctorSlot,
   Appointment,
   SmartSuggestion,
-  District,
-  KERALA_DISTRICTS
+  District
 } from '../types';
 import { DoctorRecommendationCard } from '../components/booking/DoctorRecommendationCard';
 import { SmartLoadBalancerModal } from '../components/booking/SmartLoadBalancerModal';
@@ -448,7 +447,22 @@ export const OPBooking: React.FC<OPBookingProps> = ({ setActiveTab }) => {
               onChange={(e) => setDistrictFilter(e.target.value as District)}
               className="p-2 border border-slate-300 rounded-xl text-xs font-bold text-slate-800"
             >
-              {KERALA_DISTRICTS.map((d) => (
+              {([
+  "Thiruvananthapuram",
+  "Kollam",
+  "Pathanamthitta",
+  "Alappuzha",
+  "Kottayam",
+  "Idukki",
+  "Ernakulam",
+  "Thrissur",
+  "Palakkad",
+  "Malappuram",
+  "Kozhikode",
+  "Wayanad",
+  "Kannur",
+  "Kasaragod",
+] as District[]).map((d) => (
                 <option key={d} value={d}>{d}</option>
               ))}
             </select>
