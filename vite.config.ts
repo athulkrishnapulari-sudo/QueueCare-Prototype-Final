@@ -37,7 +37,9 @@ export default defineConfig(() => {
           ]
         },
         workbox: {
-          globPatterns: ['**/*.{js,css,html,svg,png,ico,woff,woff2,ttf,eot}'],
+          globPatterns: ['**/*.{js,css,html,svg,ico,woff,woff2,ttf,eot}'],
+          // Increase limit for large assets (default is 2 MiB)
+          maximumFileSizeToCacheInBytes: 20 * 1024 * 1024, // 20 MB
           runtimeCaching: [
             {
               urlPattern: /^https:\/\/api\..*/i,
@@ -65,6 +67,20 @@ export default defineConfig(() => {
         }
       })
     ],
+    build: {
+      chunkSizeWarningLimit: 1000, // 1000 kB limit for chunks
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // Split vendor libraries
+            'vendor-react': ['react', 'react-dom'],
+            'vendor-supabase': ['@supabase/supabase-js'],
+            'vendor-ui': ['lucide-react', 'motion'],
+            'vendor-google': ['@google/genai'],
+          }
+        }
+      }
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
